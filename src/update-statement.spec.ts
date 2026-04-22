@@ -5,6 +5,13 @@ describe("update statement", () => {
   const parseUpdateStatement = (sql: string): UpdateStatementNode =>
     parseMSSQLStatement(sql) as UpdateStatementNode;
 
+  it("parses an update statement without semicolon", () => {
+    const result = parseUpdateStatement(
+      "UPDATE [dbo].[users] SET name = 'Alice' WHERE id = @id",
+    );
+    expect(result.kind).toBe("update");
+  });
+
   it("parses a simple update statement", () => {
     const sql = `UPDATE [dbo].[users] SET name = 'Alice', age = 30 OUTPUT inserted.id, inserted.age WHERE id = @id;`;
     const result = parseUpdateStatement(sql);

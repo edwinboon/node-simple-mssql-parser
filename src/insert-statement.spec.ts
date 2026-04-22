@@ -83,6 +83,13 @@ describe("parsing insert statement", () => {
     `);
   });
 
+  it("parses an insert statement without semicolon", () => {
+    const result = parseInsertStatement(
+      "INSERT INTO [dbo].[users] (name) VALUES ('Alice')",
+    );
+    expect(result.kind).toBe("insert");
+  });
+
   it("parses an insert with a generated id", () => {
     const sql =
       "INSERT INTO [dbo].[users] (name, age, id) VALUES ('Charlie', 40, NEWID());";

@@ -10,7 +10,7 @@ select
      orderBy:(order)?
      offset:(offset)?
      limit:(limit)?
-     ";"
+     ";"?
      { return { kind: "select", select, from, joins, where, groupBy, orderBy, offset, limit } }
 
 insert
@@ -18,7 +18,7 @@ insert
   WS "(" columns:insert_columns WS? ")"
   output:(output)?
   values:(values)
-  ";"
+  ";"?
   { return { kind: "insert", target, columns: columns.map(c => ({ kind: "column", alias: null, name: c })), output, values } }
 
 update
@@ -26,7 +26,7 @@ update
   WS "set"i WS set:(set_columns)
   output:(output)?
   where:(where)?
-  ";"
+  ";"?
   { return { kind: "update", target, set, output, where } }
 
 insert_columns
