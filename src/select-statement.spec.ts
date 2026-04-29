@@ -779,6 +779,11 @@ describe("parsing select statement", () => {
     });
   });
 
+  it("parses a select statement without semicolon", () => {
+    const result = parseSelectStatement("SELECT * FROM [dbo].[users]");
+    expect(result.kind).toBe("select");
+  });
+
   describe("offset and limit", () => {
     it("parses an offset clause", () => {
       const sql = "SELECT * FROM [dbo].[users] OFFSET 10 ROWS;";
