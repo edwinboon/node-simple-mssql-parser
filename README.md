@@ -5,7 +5,7 @@ A simple, lightweight parser for MSSQL (T-SQL) SELECT, UPDATE and INSERT stateme
 
 ## Use Cases
 
-- Parse MSSQL SELECT and INSERT queries into a structured AST for further analysis or transformation.
+- Parse MSSQL SELECT and INSERT queries into a structured AST for further analysis or transformation. (Helps tracking down syntax errors, like missing comma's)
 - Traverse the AST to filter, select, or modify nodes (e.g., extract columns, rewrite queries, static analysis).
 - Useful for query analysis tools, code generation, query rewriting, or building SQL-aware applications.
 
